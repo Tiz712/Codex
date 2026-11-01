@@ -1,0 +1,15 @@
+name: 缺陷报告
+description: 提供可复现步骤，请勿包含密钥或私人数据
+title: '[Bug] '
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤、预期与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境与脱敏日志
+      description: 系统、Python、提交版本、模型名称与错误码。
