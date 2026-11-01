@@ -1,4 +1,4 @@
-"""Provider-neutral contract. Live OpenAI integration is a pending task."""
+"""Provider-neutral generation contract."""
 from dataclasses import dataclass
 from typing import Protocol
 
@@ -9,6 +9,16 @@ class GenerationResult:
     provider: str
     model: str
     prompt_version: str
+    input_sha256: str = ''
+    usage: dict | None = None
+
+
+class GenerationError(RuntimeError):
+    """Stable public error code; never includes upstream bodies or credentials."""
+
+    def __init__(self, code: str):
+        self.code = code
+        super().__init__(code)
 
 
 class ModelGateway(Protocol):
