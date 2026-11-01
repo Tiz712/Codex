@@ -1,0 +1,22 @@
+name: 开发任务
+description: 定义范围、依赖与验收证据
+title: '[MFG-XXX] '
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 目标与范围
+      description: 写明用户流程及本任务不包含的功能。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收条件
+      description: 包括成功流程、失败行为与测试证据。
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 依赖、负责人和截止日期
