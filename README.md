@@ -8,9 +8,9 @@
 
 这是环境重建后的 GitHub 起步包，不是完整 MVP。
 
-- 已实现：四形态约束、游戏材料扣除、会话内幂等、可替换模型网关、OpenAI 结构化概念适配器与命令行、离线回归测试。
+- 已实现：四形态约束、游戏材料扣除、会话内幂等、可替换模型网关、OpenAI 结构化概念适配器与命令行、FastAPI、SQLite 持久化与离线回归测试。
 - 已配置：GitHub Actions、Issue 模板、PR 模板、环境变量示例。
-- 待实现：真实模型实测、API、数据库、网页、3D、游戏导入与部署。
+- 待实现：真实模型实测、中文工作台、3D、游戏导入与生产部署。
 - 预设案例为人工示例，不冒充 AI 结果；尚无可打印性声明。
 
 ## 本地验证
@@ -18,7 +18,7 @@
 Python 3.12+：
 
 ```bash
-python -m pip install -e .
+python -m pip install -e '.[api,test]'
 python -m unittest discover -s tests -v
 python -m compileall -q myriadforge tests
 ```
@@ -48,3 +48,12 @@ CI 使用离线测试，不需要模型密钥；实际结果以 GitHub Actions �
 
 参见 [开发规范](CONTRIBUTING.md)、[安全说明](SECURITY.md)、[开发任务](docs/backlog.md)。
 尚未选定开源许可证；公开可见不构成开源授权。
+
+## 本地接口
+
+```bash
+python -m uvicorn myriadforge.api:app --host 127.0.0.1 --port 8000
+```
+
+打开 `http://127.0.0.1:8000/docs` 查看接口。详见 [API 与持久化](docs/api.md)。
+仅限本地研发；目前没有登录、配额和公开部署能力。生成概念与固定模拟案例仍相互独立。
